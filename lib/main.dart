@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider<BmiBloc>(
       create: (context) => BmiBloc(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'BMI Calculator',
         theme: ThemeData(
           //fontFamily: "IRANSans",
           //primaryColor: Colors.white,
