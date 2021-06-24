@@ -5,9 +5,9 @@ import 'package:bmi_calculator/data/models/BMI.dart';
 class BMIRepository {
   final BMIProvider bmiProvier = BMIProvider();
 
-  Map<String, String> getBMIResults(
-      int weight, int height, int age, Gender gender) {
+  Future<Map<String, String>> getBMIResults(
+      int weight, int height, int age, Gender gender) async {
     BMI bmi = bmiProvier.getBMICalculationResult(gender, height, weight, age);
-    return bmi.calculateBMIResult();
+    return await bmi.calculateBMIResult();
   }
 }

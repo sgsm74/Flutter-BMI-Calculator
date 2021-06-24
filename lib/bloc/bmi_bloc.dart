@@ -9,7 +9,8 @@ part 'bmi_event.dart';
 part 'bmi_state.dart';
 
 class BmiBloc extends Bloc<BmiEvent, BmiState> {
-  BmiBloc() : super(BmiState(bmi: '', bmiResult: '', description: ""));
+  BmiBloc()
+      : super(BmiState(bmi: '', bmiResult: '', description: "", range: ""));
 
   final BMIRepository repo = BMIRepository();
   @override
@@ -18,13 +19,14 @@ class BmiBloc extends Bloc<BmiEvent, BmiState> {
   ) async* {
     // TODO: implement mapEventToState
     if (event is BMICalculate) {
-      final results = repo.getBMIResults(
+      final results = await repo.getBMIResults(
           event.weight, event.height, event.age, event.gender);
       //await Future.delayed(Duration(seconds: 10));
       yield BmiState(
           bmi: results['BMI']!,
           bmiResult: results['Type']!,
-          description: results['Description']!);
+          description: results['Description']!,
+          range: results['range']!);
     }
   }
 }

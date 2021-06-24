@@ -59,12 +59,12 @@ class ResultsScreen extends StatelessWidget {
                         style: kBMIStyle,
                       ),
                       Text(
-                        "محدوده نرمال شاخص BMI :",
+                        "محدوده نرمال شاخص BMI مناسب سن شما :",
                         textDirection: TextDirection.rtl,
                         style: kBodyTextStyle,
                       ),
                       Text(
-                        "18.5 - 25 kg/m2",
+                        state.range + " kg/m2",
                         style: kBodyTextStyle,
                       ),
                       Text(

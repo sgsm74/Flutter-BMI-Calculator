@@ -209,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Icons.remove,
                               onPress: () {
                                 setState(() {
-                                  if (age > 1) age = age - 1;
+                                  if (age > 3) age = age - 1;
                                 });
                               },
                             )
