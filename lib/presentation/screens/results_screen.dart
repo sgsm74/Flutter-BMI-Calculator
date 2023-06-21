@@ -1,6 +1,5 @@
 import 'package:bmi_calculator/bloc/bmi_bloc.dart';
 import 'package:bmi_calculator/constants/constants.dart';
-import 'package:bmi_calculator/presentation/screens/home_screen.dart';
 import 'package:bmi_calculator/presentation/widgets/bottom_button.dart';
 import 'package:bmi_calculator/presentation/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,7 @@ class ResultsScreen extends StatelessWidget {
         centerTitle: true,
         //leading: Icon(Icons.arrow_back_ios_new_rounded),
         elevation: 0,
+        backgroundColor: Color(0xff0a0e21),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

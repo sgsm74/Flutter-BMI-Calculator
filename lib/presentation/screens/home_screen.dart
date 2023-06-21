@@ -1,12 +1,10 @@
 import 'package:bmi_calculator/bloc/bmi_bloc.dart';
 import 'package:bmi_calculator/constants/constants.dart';
-import 'package:bmi_calculator/presentation/screens/results_screen.dart';
 import 'package:bmi_calculator/presentation/widgets/bottom_button.dart';
 import 'package:bmi_calculator/presentation/widgets/custom_card.dart';
 import 'package:bmi_calculator/presentation/widgets/gender_card.dart';
 import 'package:bmi_calculator/presentation/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         elevation: 0,
         centerTitle: true,
+        backgroundColor: Color(0xff0a0e21),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
