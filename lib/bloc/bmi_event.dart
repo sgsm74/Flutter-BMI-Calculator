@@ -59,11 +59,11 @@ class BMIIncreaseAge extends BmiEvent {
 */
 
 class BMICalculate extends BmiEvent {
+  const BMICalculate(this.age, this.height, this.weight, this.gender);
   final int age;
   final int height;
   final int weight;
   final Gender gender;
-  BMICalculate(this.age, this.height, this.weight, this.gender);
 
   @override
   String toString() =>

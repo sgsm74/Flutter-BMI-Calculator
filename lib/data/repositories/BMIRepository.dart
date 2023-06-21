@@ -6,7 +6,11 @@ class BMIRepository {
   final BMIProvider bmiProvier = BMIProvider();
 
   Future<Map<String, String>> getBMIResults(
-      int weight, int height, int age, Gender gender) async {
+    int weight,
+    int height,
+    int age,
+    Gender gender,
+  ) async {
     BMI bmi = bmiProvier.getBMICalculationResult(gender, height, weight, age);
     return await bmi.calculateBMIResult();
   }

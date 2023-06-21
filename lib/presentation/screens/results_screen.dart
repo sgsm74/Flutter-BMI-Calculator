@@ -6,20 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({Key? key}) : super(key: key);
+  const ResultsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "محاسبه گر شاخص BMI",
+        title: const Text(
+          'محاسبه گر شاخص BMI',
           textDirection: TextDirection.rtl,
         ),
         centerTitle: true,
         //leading: Icon(Icons.arrow_back_ios_new_rounded),
         elevation: 0,
-        backgroundColor: Color(0xff0a0e21),
+        backgroundColor: const Color(0xff0a0e21),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -27,10 +27,10 @@ class ResultsScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               alignment: Alignment.bottomRight,
-              child: Text(
-                "نتایج",
+              child: const Text(
+                'نتایج',
                 style: TextStyle(fontSize: 30),
                 textAlign: TextAlign.right,
               ),
@@ -48,7 +48,7 @@ class ResultsScreen extends StatelessWidget {
                     children: [
                       Text(
                         state.bmiResult,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Color(0xff24d876),
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -58,13 +58,13 @@ class ResultsScreen extends StatelessWidget {
                         state.bmi,
                         style: kBMIStyle,
                       ),
-                      Text(
-                        "محدوده نرمال شاخص BMI مناسب سن شما :",
+                      const Text(
+                        'محدوده نرمال شاخص BMI مناسب سن شما :',
                         textDirection: TextDirection.rtl,
                         style: kBodyTextStyle,
                       ),
                       Text(
-                        state.range + " kg/m2",
+                        '${state.range} kg/m2',
                         style: kBodyTextStyle,
                       ),
                       Text(
@@ -79,7 +79,7 @@ class ResultsScreen extends StatelessWidget {
             },
           ),
           BottomButton(
-            title: "محاسبه مجدد",
+            title: 'محاسبه مجدد',
             onPress: () {
               Navigator.pop(context);
             },

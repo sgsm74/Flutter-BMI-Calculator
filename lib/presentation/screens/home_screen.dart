@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -23,13 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "محاسبه گر شاخص BMI",
+        title: const Text(
+          'محاسبه گر شاخص BMI',
           textDirection: TextDirection.rtl,
         ),
         elevation: 0,
         centerTitle: true,
-        backgroundColor: Color(0xff0a0e21),
+        backgroundColor: const Color(0xff0a0e21),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -47,78 +47,82 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: selectedGender == Gender.male
                         ? kActiveCardColor
                         : kInactiveCardColor,
-                    child: GenderCard(
-                      label: "آقا",
+                    child: const GenderCard(
+                      label: 'آقا',
                       icon: Icons.male,
                     ),
                   ),
                 ),
                 Expanded(
-                    child: CustomCard(
-                  onPress: () {
-                    setState(() {
-                      selectedGender = Gender.female;
-                    });
-                  },
-                  color: selectedGender == Gender.female
-                      ? kActiveCardColor
-                      : kInactiveCardColor,
-                  child: GenderCard(
-                    label: "خانم",
-                    icon: Icons.female,
+                  child: CustomCard(
+                    onPress: () {
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },
+                    color: selectedGender == Gender.female
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    child: const GenderCard(
+                      label: 'خانم',
+                      icon: Icons.female,
+                    ),
                   ),
-                )),
+                ),
               ],
             ),
           ),
           Expanded(
-              child: CustomCard(
-                  color: kActiveCardColor,
-                  child: Column(
+            child: CustomCard(
+              color: kActiveCardColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'قد',
+                    style: kLabelTextStyle,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    textDirection: TextDirection.rtl,
                     children: [
-                      Text(
-                        "قد",
-                        style: kLabelTextStyle,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        textBaseline: TextBaseline.alphabetic,
-                        textDirection: TextDirection.rtl,
-                        children: [
-                          Text(height.toString(), style: kNumberTextStyle),
-                          Text("سانتی متر", style: kLabelTextStyle),
-                        ],
-                      ),
-                      SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                            activeTrackColor: Colors.white,
-                            inactiveTrackColor: Color(0xff8d8e98),
-                            overlayColor:
-                                kBottomContainerColor.withOpacity(0.3),
-                            thumbShape: RoundSliderThumbShape(
-                              enabledThumbRadius: 15.0,
-                            ),
-                            overlayShape:
-                                RoundSliderOverlayShape(overlayRadius: 30),
-                            thumbColor: kBottomContainerColor),
-                        child: Slider(
-                          value: height.toDouble(),
-                          onChanged: (value) {
-                            setState(() {
-                              height = value.toInt();
-                            });
-                          },
-                          min: 120.0,
-                          max: 220.0,
-                        ),
-                      )
+                      Text(height.toString(), style: kNumberTextStyle),
+                      const Text('سانتی متر', style: kLabelTextStyle),
                     ],
-                  ))),
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: const Color(0xff8d8e98),
+                      overlayColor: kBottomContainerColor.withOpacity(0.3),
+                      thumbShape: const RoundSliderThumbShape(
+                        enabledThumbRadius: 15.0,
+                      ),
+                      overlayShape: const RoundSliderOverlayShape(
+                        overlayRadius: 30,
+                      ),
+                      thumbColor: kBottomContainerColor,
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      onChanged: (value) {
+                        setState(() {
+                          height = value.toInt();
+                        });
+                      },
+                      min: 120.0,
+                      max: 220.0,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
           Expanded(
             child: Row(
               children: [
@@ -128,11 +132,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "وزن",
+                        const Text(
+                          'وزن',
                           style: kLabelTextStyle,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
@@ -142,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           textDirection: TextDirection.rtl,
                           children: [
                             Text(weight.toString(), style: kNumberTextStyle),
-                            Text("کیلوگرم", style: kLabelTextStyle),
+                            const Text('کیلوگرم', style: kLabelTextStyle),
                           ],
                         ),
                         Row(
@@ -157,12 +161,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               },
                             ),
                             RoundIconButton(
-                                child: Icons.remove,
-                                onPress: () {
-                                  setState(() {
-                                    if (weight > 10) weight = weight - 1;
-                                  });
-                                }),
+                              child: Icons.remove,
+                              onPress: () {
+                                setState(() {
+                                  if (weight > 10) weight = weight - 1;
+                                });
+                              },
+                            ),
                           ],
                         )
                       ],
@@ -175,11 +180,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "سن",
+                        const Text(
+                          'سن',
                           style: kLabelTextStyle,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
@@ -189,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           textDirection: TextDirection.rtl,
                           children: [
                             Text(age.toString(), style: kNumberTextStyle),
-                            Text("سال", style: kLabelTextStyle),
+                            const Text('سال', style: kLabelTextStyle),
                           ],
                         ),
                         Row(
@@ -221,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           BottomButton(
-            title: "محاسبه",
+            title: 'محاسبه',
             onPress: () {
               BlocProvider.of<BmiBloc>(context).add(
                 BMICalculate(age, height, weight, selectedGender),

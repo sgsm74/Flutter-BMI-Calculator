@@ -15,7 +15,10 @@ const kLabelTextStyle = TextStyle(
 );
 
 const kNumberTextStyle = TextStyle(
-    fontSize: 40, fontWeight: FontWeight.w900, fontFamily: 'IRANSans');
+  fontSize: 40,
+  fontWeight: FontWeight.w900,
+  fontFamily: 'IRANSans',
+);
 
 const kBMIStyle = TextStyle(
   fontSize: 80,
