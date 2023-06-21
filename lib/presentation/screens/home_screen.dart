@@ -232,8 +232,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 BMICalculate(age, height, weight, selectedGender),
               );
               Navigator.pushNamed(context, '/result');
-              /*Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultsScreen()));*/
             },
           )
         ],

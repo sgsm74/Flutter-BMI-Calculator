@@ -17,7 +17,6 @@ class ResultsScreen extends StatelessWidget {
           textDirection: TextDirection.rtl,
         ),
         centerTitle: true,
-        //leading: Icon(Icons.arrow_back_ios_new_rounded),
         elevation: 0,
         backgroundColor: const Color(0xff0a0e21),
       ),

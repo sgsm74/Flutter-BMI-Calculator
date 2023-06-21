@@ -53,10 +53,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'BMI Calculator',
         theme: ThemeData(
-          //fontFamily: "IRANSans",
-          //primaryColor: Colors.white,
-          //brightness: Brightness.light,
-          //textTheme: TextTheme(bodyText2:TextStyle(color: Colors.white),
           brightness: Brightness.dark,
           scaffoldBackgroundColor: const Color(0xff0a0e21),
           primaryColor: const Color(0xff0a0e21),
@@ -69,7 +65,6 @@ class MyApp extends StatelessWidget {
           fontFamily: 'IRANSans',
         ),
         debugShowCheckedModeBanner: false,
-        //home: HomeScreen(),
         initialRoute: '/',
         routes: {
           '/': (context) => const HomeScreen(),
