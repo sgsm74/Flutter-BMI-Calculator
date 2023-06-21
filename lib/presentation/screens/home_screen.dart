@@ -16,9 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Gender selectedGender = Gender.male;
-  int height = 160;
-  int weight = 70;
-  int age = 22;
+  int height = 160, weight = 70, age = 22;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
