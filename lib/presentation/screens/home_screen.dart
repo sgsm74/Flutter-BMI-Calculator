@@ -4,6 +4,7 @@ import 'package:bmi_calculator/presentation/widgets/bottom_button.dart';
 import 'package:bmi_calculator/presentation/widgets/custom_card.dart';
 import 'package:bmi_calculator/presentation/widgets/gender_card.dart';
 import 'package:bmi_calculator/presentation/widgets/round_icon_button.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Gender selectedGender = Gender.male;
   int height = 160, weight = 70, age = 22;
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
