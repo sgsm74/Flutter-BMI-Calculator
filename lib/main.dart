@@ -1,19 +1,22 @@
 import 'package:bmi_calculator/bloc/bmi_bloc.dart';
+import 'package:bmi_calculator/firebase_options.dart';
 import 'package:bmi_calculator/presentation/screens/home_screen.dart';
 import 'package:bmi_calculator/presentation/screens/results_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
   Bloc.observer = SimpleBlocObserver();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Color(0xff0a0e21), //or set color with: Color(0xFF0000FF)
-    //statusBarIconBrightness: Brightness.dark,
-    //statusBarBrightness: Brightness.dark, //
-    //systemNavigationBarColor: Colors.white,
-    //systemNavigationBarIconBrightness: Brightness.dark,
   ));
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
