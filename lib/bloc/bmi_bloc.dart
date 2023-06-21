@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bmi_calculator/constants/constants.dart';
-import 'package:bmi_calculator/data/repositories/BMIRepository.dart';
+import 'package:bmi_calculator/data/repositories/bmi_repository.dart';
 
 part 'bmi_event.dart';
 part 'bmi_state.dart';

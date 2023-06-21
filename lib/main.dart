@@ -1,5 +1,5 @@
 import 'package:bmi_calculator/bloc/bmi_bloc.dart';
-import 'package:bmi_calculator/data/repositories/BMIRepository.dart';
+import 'package:bmi_calculator/data/repositories/bmi_repository.dart';
 import 'package:bmi_calculator/firebase_options.dart';
 import 'package:bmi_calculator/presentation/screens/home_screen.dart';
 import 'package:bmi_calculator/presentation/screens/results_screen.dart';
