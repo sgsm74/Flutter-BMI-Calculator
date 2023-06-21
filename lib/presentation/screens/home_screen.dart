@@ -200,7 +200,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPress: () {
                                 setState(() {
                                   if (age < 120) age = age + 1;
-                                  ;
                                 });
                               },
                             ),
