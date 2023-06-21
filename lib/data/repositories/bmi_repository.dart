@@ -1,6 +1,6 @@
 import 'package:bmi_calculator/constants/constants.dart';
-import 'package:bmi_calculator/data/dataproviders/BMIProvider.dart';
-import 'package:bmi_calculator/data/models/BMI.dart';
+import 'package:bmi_calculator/data/dataproviders/bmi_provider.dart';
+import 'package:bmi_calculator/data/models/bmi.dart';
 
 class BMIRepository {
   final BMIProvider bmiProvier = BMIProvider();
@@ -11,7 +11,7 @@ class BMIRepository {
     int age,
     Gender gender,
   ) async {
-    BMI bmi = bmiProvier.getBMICalculationResult(gender, height, weight, age);
+    Bmi bmi = bmiProvier.getBMICalculationResult(gender, height, weight, age);
     return await bmi.calculateBMIResult();
   }
 }

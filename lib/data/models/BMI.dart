@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:bmi_calculator/constants/constants.dart';
 import 'package:flutter/services.dart';
 
-class BMI {
-  const BMI({
+class Bmi {
+  const Bmi({
     required this.weight,
     required this.height,
     required this.age,
