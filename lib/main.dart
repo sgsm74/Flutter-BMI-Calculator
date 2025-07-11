@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const HomeScreen(),
-          '/result': (context) => const ResultsScreen()
+          '/result': (context) => const ResultsScreen(),
         },
       ),
     );

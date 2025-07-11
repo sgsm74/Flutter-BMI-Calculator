@@ -44,9 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         selectedGender = Gender.male;
                       });
                     },
-                    color: selectedGender == Gender.male
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
+                    color: selectedGender == Gender.male ? kActiveCardColor : kInactiveCardColor,
                     child: const GenderCard(
                       label: 'آقا',
                       icon: Icons.male,
@@ -60,9 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         selectedGender = Gender.female;
                       });
                     },
-                    color: selectedGender == Gender.female
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
+                    color: selectedGender == Gender.female ? kActiveCardColor : kInactiveCardColor,
                     child: const GenderCard(
                       label: 'خانم',
                       icon: Icons.female,
@@ -118,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       min: 120.0,
                       max: 220.0,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -169,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               },
                             ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -215,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   if (age > 3) age = age - 1;
                                 });
                               },
-                            )
+                            ),
                           ],
                         ),
                       ],
@@ -233,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
               Navigator.pushNamed(context, '/result');
             },
-          )
+          ),
         ],
       ),
     );

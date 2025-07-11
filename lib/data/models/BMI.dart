@@ -24,8 +24,7 @@ class Bmi {
   calculateBMIResult() async {
     double bmi = calculateBMI();
 
-    String type =
-        age <= 20 ? await calculateForChild(bmi, gender, age) : typeOfBMI(bmi);
+    String type = age <= 20 ? await calculateForChild(bmi, gender, age) : typeOfBMI(bmi);
 
     String description = '';
     String range = age <= 20 ? await calculateRange(gender, age) : '18.5 - 25';
@@ -34,7 +33,7 @@ class Bmi {
       'BMI': bmi.toStringAsFixed(1),
       'Type': type,
       'Description': description,
-      'range': range
+      'range': range,
     };
     return data;
   }
@@ -78,11 +77,9 @@ class Bmi {
 
     if (bmi < double.parse(percentages5)) {
       result = 'کم وزن';
-    } else if (bmi >= double.parse(percentages5) &&
-        bmi < double.parse(percentages85)) {
+    } else if (bmi >= double.parse(percentages5) && bmi < double.parse(percentages85)) {
       result = 'نرمال';
-    } else if (bmi >= double.parse(percentages85) &&
-        bmi < double.parse(percentages95)) {
+    } else if (bmi >= double.parse(percentages85) && bmi < double.parse(percentages95)) {
       result = 'دارای اضافه وزن';
     } else {
       result = 'چاق';
@@ -99,11 +96,9 @@ class Bmi {
     String percentages95 = data[age.toString()][0]['95'];
     if (bmi < double.parse(percentages5)) {
       result = 'کم وزن';
-    } else if (bmi >= double.parse(percentages5) &&
-        bmi < double.parse(percentages85)) {
+    } else if (bmi >= double.parse(percentages5) && bmi < double.parse(percentages85)) {
       result = 'نرمال';
-    } else if (bmi >= double.parse(percentages85) &&
-        bmi < double.parse(percentages95)) {
+    } else if (bmi >= double.parse(percentages85) && bmi < double.parse(percentages95)) {
       result = 'دارای اضافه وزن';
     } else {
       result = 'چاق';
@@ -112,15 +107,11 @@ class Bmi {
   }
 
   Future<String> getJson(String gender) {
-    return gender == 'boy'
-        ? rootBundle.loadString('assets/boys-data.json')
-        : rootBundle.loadString('assets/girls-data.json');
+    return gender == 'boy' ? rootBundle.loadString('assets/boys-data.json') : rootBundle.loadString('assets/girls-data.json');
   }
 
   Future<String> calculateRange(Gender gender, int age) async {
-    Map<String, dynamic> data = gender == Gender.male
-        ? jsonDecode(await getJson('boy'))
-        : jsonDecode(await getJson('girl'));
+    Map<String, dynamic> data = gender == Gender.male ? jsonDecode(await getJson('boy')) : jsonDecode(await getJson('girl'));
 
     String percentages5 = data[age.toString()][0]['5'];
     String percentages85 = data[age.toString()][0]['85'];
