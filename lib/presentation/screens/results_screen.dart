@@ -1,7 +1,4 @@
 import 'package:bmi_calculator/bloc/bmi_bloc.dart';
-import 'package:bmi_calculator/constants/constants.dart';
-import 'package:bmi_calculator/presentation/widgets/bottom_button.dart';
-import 'package:bmi_calculator/presentation/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,80 +7,113 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final isDark = theme.brightness == Brightness.dark;
+
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text(
-          'محاسبه گر شاخص BMI',
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        elevation: theme.appBarTheme.elevation,
+        centerTitle: theme.appBarTheme.centerTitle,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'نتیجه BMI شما 🧾',
           textDirection: TextDirection.rtl,
+          style: theme.appBarTheme.titleTextStyle!.copyWith(fontFamily: 'IRANSans'),
         ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: const Color(0xff0a0e21),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(15),
-              alignment: Alignment.bottomRight,
-              child: const Text(
-                'نتایج',
-                style: TextStyle(fontSize: 30),
-                textAlign: TextAlign.right,
-              ),
-            ),
-          ),
-          BlocBuilder<BmiBloc, BmiState>(
-            builder: (context, state) {
-              return Expanded(
-                flex: 5,
-                child: CustomCard(
-                  color: kActiveCardColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: BlocBuilder<BmiBloc, BmiState>(
+          builder: (context, state) {
+            return Column(
+              spacing: 16,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'نتایج شما',
+                  textDirection: TextDirection.rtl,
+                  style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: theme.cardColor,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      if (!isDark)
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.05),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                    ],
+                  ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         state.bmiResult,
-                        style: const TextStyle(
-                          color: Color(0xff24d876),
-                          fontSize: 22,
+                        style: textTheme.displayMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: state.bmiResult.contains('نرمال') ? Colors.green : Colors.orange,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        state.bmi,
+                        style: textTheme.displaySmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: colorScheme.primary,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'محدوده نرمال شاخص BMI:',
+                        textDirection: TextDirection.rtl,
+                        style: textTheme.bodyLarge,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '${state.range} kg/m²',
+                        style: textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(
-                        state.bmi,
-                        style: kBMIStyle,
-                      ),
-                      const Text(
-                        'محدوده نرمال شاخص BMI مناسب سن شما :',
-                        textDirection: TextDirection.rtl,
-                        style: kBodyTextStyle,
-                      ),
-                      Text(
-                        '${state.range} kg/m2',
-                        style: kBodyTextStyle,
-                      ),
+                      const SizedBox(height: 16),
                       Text(
                         state.description,
-                        style: kBodyTextStyle,
+                        style: textTheme.bodyMedium?.copyWith(height: 1.6),
                         textAlign: TextAlign.center,
+                        textDirection: TextDirection.rtl,
                       ),
                     ],
                   ),
                 ),
-              );
-            },
-          ),
-          BottomButton(
-            title: 'محاسبه مجدد',
-            onPress: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
+                const SizedBox(height: 30),
+                SizedBox(
+                  height: 50,
+                  child: ElevatedButton.icon(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.refresh),
+                    label: const Text('محاسبه مجدد'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: colorScheme.primary,
+                      foregroundColor: colorScheme.onPrimary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      textStyle: textTheme.titleMedium,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
